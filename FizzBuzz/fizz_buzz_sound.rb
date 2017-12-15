@@ -18,7 +18,7 @@ class FizzBuzzSound
   attr_reader :rules
 
   def sounds(number)
-    rules.map { |rule| rule.sound_for(number) }
+    rules.map { |rule| rule.for(number) }
   end
 
   def init_rules(args)

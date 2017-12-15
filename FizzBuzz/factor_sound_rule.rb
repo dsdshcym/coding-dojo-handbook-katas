@@ -1,5 +1,5 @@
 class FactorSoundRule < Struct.new(:factor, :sound)
-  def sound_for(number)
+  def for(number)
     if convertable?(number)
       sound
     else
