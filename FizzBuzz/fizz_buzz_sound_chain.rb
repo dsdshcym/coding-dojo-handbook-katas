@@ -1,4 +1,4 @@
-require_relative 'factor_sound_rule'
+require_relative 'number_sound_converter'
 
 class FizzBuzzSoundChain
   def initialize(*args)
@@ -23,7 +23,7 @@ class FizzBuzzSoundChain
 
   def init_rules(args)
     args.reduce([]) do |rules, arg|
-      rules << FactorSoundRule.new(arg[1]) do |number|
+      rules << NumberSoundConverter.new(arg[1]) do |number|
         number.modulo(arg[0]).zero?
       end
     end

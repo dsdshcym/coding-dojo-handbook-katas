@@ -1,4 +1,4 @@
-class FactorSoundRule
+class NumberSoundConverter
   def initialize(sound, &block)
     @sound = sound
     @block = block
