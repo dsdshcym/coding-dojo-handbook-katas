@@ -1,4 +1,5 @@
 require_relative 'fizz_buzz_sound'
+require_relative 'fallback_sound'
 
 class FizzBuzz
   def self.output(from, to)
@@ -7,6 +8,7 @@ class FizzBuzz
 
   def initialize
     @sound = init_sound
+    @fallback_sound = init_fallback_sound
   end
 
   def output(from, to)
@@ -19,13 +21,13 @@ class FizzBuzz
     if sound.convertable?(number)
       sound.for(number)
     else
-      number.to_s
+      fallback_sound.for(number)
     end
   end
 
   private
 
-  attr_reader :sound
+  attr_reader :sound, :fallback_sound
 
   def init_sound
     FizzBuzzSound.new(
@@ -33,5 +35,9 @@ class FizzBuzz
       [5, 'Buzz'],
       [7, 'Whizz']
     )
+  end
+
+  def init_fallback_sound
+    FallbackSound.new
   end
 end
