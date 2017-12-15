@@ -8,9 +8,7 @@ class FizzBuzz
   end
 
   def initialize
-    @fizz_sound = init_fizz_sound
-    @fizz_buzz_sound = init_fizz_buzz_sound
-    @fallback_sound = init_fallback_sound
+    @sounds = init_sounds
   end
 
   def output(from, to)
@@ -20,18 +18,22 @@ class FizzBuzz
   end
 
   def for(number)
-    if fizz_buzz_sound.convertable?(number)
-      fizz_buzz_sound.for(number)
-    elsif fizz_sound.convertable?(number)
-      fizz_sound.for(number)
-    else
-      fallback_sound.for(number)
-    end
+    sounds
+      .detect { |sound| sound.convertable?(number) }
+      .for(number)
   end
 
   private
 
-  attr_reader :fizz_sound, :fizz_buzz_sound, :fallback_sound
+  attr_reader :sounds
+
+  def init_sounds
+    @sounds = [
+      init_fizz_buzz_sound,
+      init_fizz_sound,
+      init_fallback_sound
+    ]
+  end
 
   def init_fizz_sound
     FizzSound.new(3)
