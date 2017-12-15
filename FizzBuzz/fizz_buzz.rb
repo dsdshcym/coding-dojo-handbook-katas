@@ -1,19 +1,31 @@
+require_relative 'fizz_buzz_sound'
+
 class FizzBuzz
   def self.output(from, to)
+    new.output(from, to)
+  end
+
+  def output(from, to)
     (from..to)
       .map { |num| self.for(num) }
       .join("\n")
   end
 
-  def self.for(number)
-    if number.modulo(3).zero? && number.modulo(5).zero?
-      'FizzBuzz'
-    elsif number.modulo(3).zero?
-      'Fizz'
-    elsif number.modulo(5).zero?
-      'Buzz'
+  def for(number)
+    if sound.convertable?(number)
+      sound.for(number)
     else
       number.to_s
     end
+  end
+
+  private
+
+  def sound
+    @sound ||=
+      FizzBuzzSound.new(
+        [3, 'Fizz'],
+        [5, 'Buzz']
+      )
   end
 end
