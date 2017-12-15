@@ -1,5 +1,5 @@
 require_relative 'fizz_sound'
-require_relative 'fizz_buzz_sound'
+require_relative 'fizz_buzz_sound_chain'
 require_relative 'fallback_sound'
 
 class FizzBuzz
@@ -29,7 +29,7 @@ class FizzBuzz
 
   def init_sounds
     @sounds = [
-      init_fizz_buzz_sound,
+      init_fizz_buzz_sound_chain,
       init_fizz_sound,
       init_fallback_sound
     ]
@@ -39,8 +39,8 @@ class FizzBuzz
     FizzSound.new(3)
   end
 
-  def init_fizz_buzz_sound
-    FizzBuzzSound.new(
+  def init_fizz_buzz_sound_chain
+    FizzBuzzSoundChain.new(
       [3, 'Fizz'],
       [5, 'Buzz'],
       [7, 'Whizz']

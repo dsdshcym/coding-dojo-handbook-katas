@@ -1,6 +1,6 @@
 require_relative 'factor_sound_rule'
 
-class FizzBuzzSound
+class FizzBuzzSoundChain
   def initialize(*args)
     @rules = init_rules(args)
   end

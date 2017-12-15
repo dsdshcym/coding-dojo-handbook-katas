@@ -1,10 +1,10 @@
 require 'minitest/autorun'
 
-require_relative 'fizz_buzz_sound'
+require_relative 'fizz_buzz_sound_chain'
 
-class FizzBuzzSoundTest < Minitest::Test
+class FizzBuzzSoundChainTest < Minitest::Test
   def setup
-    @sound = FizzBuzzSound.new(
+    @sound = FizzBuzzSoundChain.new(
       [3, 'Fizz'],
       [5, 'Buzz'],
       [7, 'Whizz']
