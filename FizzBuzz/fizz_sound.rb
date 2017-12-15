@@ -1,21 +1,9 @@
-class FizzSound
+require_relative 'number_sound_converter'
+
+class FizzSound < NumberSoundConverter
   def initialize(digit)
-    @digit = digit.to_s
-  end
-
-  def convertable?(number)
-    number.to_s.include?(digit)
-  end
-
-  def for(number)
-    if convertable?(number)
-      'Fizz'
-    else
-      ''
+    super('Fizz') do |number|
+      number.to_s.include?(digit.to_s)
     end
   end
-
-  private
-
-  attr_reader :digit
 end
