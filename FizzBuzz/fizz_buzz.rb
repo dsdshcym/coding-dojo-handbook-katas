@@ -5,6 +5,10 @@ class FizzBuzz
     new.output(from, to)
   end
 
+  def initialize
+    @sound = init_sound
+  end
+
   def output(from, to)
     (from..to)
       .map { |num| self.for(num) }
@@ -21,12 +25,13 @@ class FizzBuzz
 
   private
 
-  def sound
-    @sound ||=
-      FizzBuzzSound.new(
-        [3, 'Fizz'],
-        [5, 'Buzz'],
-        [7, 'Whizz']
-      )
+  attr_reader :sound
+
+  def init_sound
+    FizzBuzzSound.new(
+      [3, 'Fizz'],
+      [5, 'Buzz'],
+      [7, 'Whizz']
+    )
   end
 end
