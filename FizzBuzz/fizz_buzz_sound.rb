@@ -1,34 +1,29 @@
+require_relative 'factor_sound_rule'
+
 class FizzBuzzSound
-  def initialize(*factor_sound_rules)
-    @factor_sound_rules = *factor_sound_rules
+  def initialize(*args)
+    @rules = init_rules(args)
   end
 
   def convertable?(number)
-    factors.any? { |factor| dividable?(number, factor) }
+    rules.any? { |rule| rule.convertable?(number) }
   end
 
   def for(number)
-    factor_sound_rules.reduce('') do |result, rule|
-      factor = rule[0]
-      sound = rule[1]
-
-      if dividable?(number, factor)
-        result + sound
-      else
-        result
-      end
-    end
+    sounds(number).join
   end
 
   private
 
-  attr_reader :factor_sound_rules
+  attr_reader :rules
 
-  def dividable?(number, factor)
-    number.modulo(factor).zero?
+  def sounds(number)
+    rules.map { |rule| rule.sound_for(number) }
   end
 
-  def factors
-    factor_sound_rules.map { |rule| rule[0] }
+  def init_rules(args)
+    args.reduce([]) do |rules, arg|
+      rules << FactorSoundRule.new(*arg)
+    end
   end
 end
