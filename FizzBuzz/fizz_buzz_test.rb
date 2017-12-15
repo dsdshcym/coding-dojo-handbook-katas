@@ -24,7 +24,7 @@ class FizzBuzzTest < Minitest::Test
         Buzz
         11
         Fizz
-        13
+        Fizz
         Whizz
         FizzBuzz
         16
