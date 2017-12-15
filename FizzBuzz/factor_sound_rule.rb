@@ -1,4 +1,9 @@
-class FactorSoundRule < Struct.new(:factor, :sound)
+class FactorSoundRule
+  def initialize(sound, &block)
+    @sound = sound
+    @block = block
+  end
+
   def for(number)
     if convertable?(number)
       sound
@@ -8,12 +13,10 @@ class FactorSoundRule < Struct.new(:factor, :sound)
   end
 
   def convertable?(number)
-    dividable?(number, factor)
+    block.call(number)
   end
 
   private
 
-  def dividable?(number, factor)
-    number.modulo(factor).zero?
-  end
+  attr_reader :block, :sound
 end

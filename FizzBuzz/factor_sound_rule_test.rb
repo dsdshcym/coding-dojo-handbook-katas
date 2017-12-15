@@ -4,7 +4,9 @@ require_relative 'factor_sound_rule'
 
 class FactorSoundRuleTest < Minitest::Test
   def test_for_number_undividable_is_empty_string
-    rule = FactorSoundRule.new(3, 'Fizz')
+    rule = FactorSoundRule.new('Fizz') do |number|
+      number.modulo(3).zero?
+    end
 
     sound = rule.for(2)
 
@@ -12,7 +14,9 @@ class FactorSoundRuleTest < Minitest::Test
   end
 
   def test_for_number_dividable_by_factor_is_sound
-    rule = FactorSoundRule.new(3, 'Fizz')
+    rule = FactorSoundRule.new('Fizz') do |number|
+      number.modulo(3).zero?
+    end
 
     sound = rule.for(3)
 
