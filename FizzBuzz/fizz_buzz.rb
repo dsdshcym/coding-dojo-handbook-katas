@@ -7,7 +7,7 @@ class FizzBuzz
   end
 
   def initialize
-    @sound = init_sound
+    @fizz_buzz_sound = init_fizz_buzz_sound
     @fallback_sound = init_fallback_sound
   end
 
@@ -18,8 +18,8 @@ class FizzBuzz
   end
 
   def for(number)
-    if sound.convertable?(number)
-      sound.for(number)
+    if fizz_buzz_sound.convertable?(number)
+      fizz_buzz_sound.for(number)
     else
       fallback_sound.for(number)
     end
@@ -27,9 +27,9 @@ class FizzBuzz
 
   private
 
-  attr_reader :sound, :fallback_sound
+  attr_reader :fizz_buzz_sound, :fallback_sound
 
-  def init_sound
+  def init_fizz_buzz_sound
     FizzBuzzSound.new(
       [3, 'Fizz'],
       [5, 'Buzz'],
