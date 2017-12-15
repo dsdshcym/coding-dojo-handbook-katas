@@ -25,7 +25,8 @@ class FizzBuzz
     @sound ||=
       FizzBuzzSound.new(
         [3, 'Fizz'],
-        [5, 'Buzz']
+        [5, 'Buzz'],
+        [7, 'Whizz']
       )
   end
 end
